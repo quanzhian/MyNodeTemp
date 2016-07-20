@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<div id="main">
+    <ul>
+        {{each list}}
+        <li>编号：{{$value.id}} &nbsp;&nbsp;姓名：{{$value.nick_name}}</a></li>
+        {{if create_date}}
+        {{$value.create_date | dateFormat:'yyyy年 MM月 dd日 hh:mm:ss'}}
+        {{/if}}
+        {{/each}}
+    </ul>
+</div>
+</body>
+</html>

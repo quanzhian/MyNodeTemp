@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<div id="main">
+    <ul>
+        {{each list}}
+        <li>编号：{{$value.id}} &nbsp;&nbsp;姓名：{{$value.name}}</a></li>
+        {{/each}}
+    </ul>
+    {{time | dateFormat:'yyyy年 MM月 dd日 hh:mm:ss'}}
+</div>
+</body>
+</html>
