@@ -3,6 +3,6 @@ NodeJs+sequelize+express+mysql+artTemplate 组合的web网站
 <br/>
 效果如下
 <br/>
-<img src="https://pan.baidu.com/s/1qYeUoIK"/>
+<a href="https://pan.baidu.com/s/1qYeUoIK"/>https://pan.baidu.com/s/1qYeUoIK</a>
 <br/>
-<img src="https://pan.baidu.com/s/1qYqz8GO"/>
+<a href="https://pan.baidu.com/s/1qYqz8GO"/>https://pan.baidu.com/s/1qYqz8GO</a>
