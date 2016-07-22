@@ -1,8 +1,11 @@
 # MyNodeTemp
 NodeJs+sequelize+express+mysql+artTemplate 组合的web网站
 <br/>
-效果如下
+启动程序之后，在浏览器上输入http://localhost:3000/main
 <br/>
-<a href="https://pan.baidu.com/s/1qYeUoIK"/>https://pan.baidu.com/s/1qYeUoIK</a>
+效果如下：
 <br/>
-<a href="https://pan.baidu.com/s/1qYqz8GO"/>https://pan.baidu.com/s/1qYqz8GO</a>
+![image](https://github.com/quanzhian/generate-code/blob/master/public/images/page_main_index.png)
+<br/>
+![image](https://github.com/quanzhian/generate-code/blob/master/public/images/page_main.png)
+<br/>

@@ -26,6 +26,26 @@ router.get('/', function (req, res) {
     //res.render('index', { title: 'Express' });
 });
 
+router.get('/main', function (req, res) {
+    res.render('main', {});
+});
+
+router.get('/main_index', function (req, res) {
+    res.render('main_index', {});
+});
+
+router.get('/login', function (req, res) {
+    res.render('index', {});
+});
+
+router.post('/login', function (req, res) {
+    res.redirect('/');
+});
+
+router.get('/logout', function (req, res) {
+    res.render('index', data);
+});
+
 /* upload page. */
 router.post('/upload', function (req, res) {
     //for (var i in req.files) {
