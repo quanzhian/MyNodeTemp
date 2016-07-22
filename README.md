@@ -5,7 +5,7 @@ NodeJs+sequelize+express+mysql+artTemplate 组合的web网站
 <br/>
 效果如下：
 <br/>
-![image](https://github.com/quanzhian/generate-code/blob/master/public/images/page_main_index.png)
+![image](https://github.com/quanzhian/MyNodeTemp/blob/master/public/images/page_main_index.png)
 <br/>
-![image](https://github.com/quanzhian/generate-code/blob/master/public/images/page_main.png)
+![image](https://github.com/quanzhian/MyNodeTemp/blob/master/public/images/page_main.png)
 <br/>
