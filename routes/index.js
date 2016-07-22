@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
     //res.render('index', { title: 'Express' });
 });
 
-/* GET home page. */
+/* upload page. */
 router.post('/upload', function (req, res, next) {
     for (var i in req.files) {
         if (req.files[i].size == 0){

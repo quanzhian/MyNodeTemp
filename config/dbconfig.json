@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "mlx_daoyo",
+    "database": "dbg_cms",
     "host": "localhost",
     "port":3306,
     "dialect": "mysql"

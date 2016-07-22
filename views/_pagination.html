@@ -1,0 +1,34 @@
+{{if pgRowCount}}
+<div class="row">
+    <div class="col-md-12 col-sm-12" style="padding: 12px 12px; line-height: 1.42857; margin: 10px 0px;text-align: center;">
+        抱歉,没有找到数据!
+    </div>
+</div>
+{{else}}
+<div class="row">
+    <div class="col-md-5 col-sm-5" style="padding: 12px 12px; line-height: 1.42857; margin: 10px 0px;">
+        当前显示&nbsp;{{pgRowCount}}&nbsp;条,总共&nbsp;{{totalCount}}&nbsp;条
+    </div>
+    <div class="col-md-7 col-sm-7">
+        <ul class="pagination" style="visibility: visible; float: right;">
+            <li class="prev {{prevDisabled}}">
+                {{if prevDisabled}}
+                <a href="#" data-page="{{prev_Page}}" title="上一页"><i class="fa fa-angle-left"></i></a>
+                {{else}}
+                <a href="{{pathName}}?pageno={{prev_Page}}&pagesize={{pageSize}}" data-page="{{prev_Page}}" title="上一页"><i class="fa fa-angle-left"></i></a>
+                {{/if}}
+            </li>
+            {{each list}}
+            <li {{if $value == currentPage}} class="active" {{/if}} data-page="{{$value}}"><a href="{{pathName}}?pageno={{$value}}&pagesize={{pageSize}}">{{$value}}</a></li>
+            {{/each}}
+            <li class="next {{nextDisabled}}">
+             {{if nextDisabled}}
+                <a href="#" data-page="{{next_Page}}" title="下一页"><i class="fa fa-angle-right"></i></a>
+             {{else}}
+                <a href="{{pathName}}?pageno={{next_Page}}&pagesize={{pageSize}}" data-page="{{next_Page}}" title="下一页"><i class="fa fa-angle-right"></i></a>
+             {{/if}}
+            </li>
+        </ul>
+    </div>
+</div>
+{{/if}}

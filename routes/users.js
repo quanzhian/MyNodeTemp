@@ -1,71 +1,100 @@
 var models  = require('../models');
+var pagination = require('../common/pagination');
 var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
-  console.log(models);
+  console.log(req.query);
   // find
-  var countPerPage = 20, currentPage = 1;
-  models.user_info.findAll({
-    'limit': countPerPage,                      // 每页多少条
-    'offset': countPerPage * (currentPage - 1)  // 跳过多少条
+  var pagesize = req.query.pagesize || 20, pageno = req.query.pageno || 1;
+  pagesize = parseInt(pagesize);
+  var _offset = parseInt(pagesize * (pageno - 1 > 0 ? pageno - 1 : 0));
+  console.log(typeof _offset);
+  models.cms_admin_user.findAndCountAll({
+    'limit': pagesize,                      // 每页多少条
+    'offset': _offset  // 跳过多少条
+  }).then(function(data) {
+    res.render('users_list', {
+      title: '用户列表',
+      list: data.rows,
+      paginator:pagination(pageno,pagesize,data.rows.length,data.count,req.baseUrl)
+    });
+  });
+
+});
+
+/* GET users list listing. */
+router.get('/list', function(req, res, next) {
+
+  console.log(req.query);
+  // find
+  var pagesize = req.query.pagesize || 20, pageno = req.query.pageno || 1;
+  pagesize = parseInt(pagesize);
+  var _offset = parseInt(pagesize * (pageno - 1 > 0 ? pageno - 1 : 0));
+  console.log(typeof _offset);
+  models.cms_admin_user.findAll({
+    'limit': pagesize,                      // 每页多少条
+    'offset': _offset  // 跳过多少条
   }).then(function(users) {
-    res.render('layout', {
+    res.render('users_list', {
       title: '用户列表',
       list: users
     });
   });
 
-
-  //models.user_info.findAll({limit : 10, order : 'id asc'}, {raw : true, logging : true, plain : false}).on('success', function(res){
-  //  console.log(res);
-  //  res.render('layout', {
-  //    title: '用户列表',
-  //    list: res
-  //  });
-  //}).on('failure', function(err){
-  //  console.log(err);
-  //})
-
 });
 
+/**
+ * 创建
+ */
+router.get('/create', function(req, res) {
+  res.render('users_create', { title: '用户列表',data:[] });
+});
+
+/**
+ * post保存新增数据
+ */
 router.post('/create', function(req, res) {
-  models.User.create({
+  models.cms_admin_user.create({
     username: req.body.username
   }).then(function() {
-    res.redirect('/');
+    res.redirect('/users');
   });
 });
 
-router.get('/:user_id/destroy', function(req, res) {
-  models.User.destroy({
-    where: {
-      id: req.params.user_id
-    }
+/**
+ * 更新
+ */
+router.get('/:id/update', function(req, res) {
+  models.cms_admin_user.findById(req.params.id).then(function (users) {
+    res.render('users_edit', { title: '用户编辑',data:users });
+  });
+});
+
+/**
+ * 更新
+ */
+router.post('/update', function (req, res) {
+  console.log(req.body);
+  models.cms_admin_user.update({
+    title: req.body.title
   }).then(function() {
     res.redirect('/');
   });
 });
 
-router.post('/:user_id/tasks/create', function (req, res) {
-  models.Task.create({
-    title: req.body.title,
-    UserId: req.params.user_id
-  }).then(function() {
+/**
+ * 删除
+ */
+router.get('/:id/delete', function(req, res) {
+  models.cms_admin_user.destroy({
+    'where': {'id': req.params.id}
+  }).then(function(){
     res.redirect('/');
   });
-});
 
-router.get('/:user_id/tasks/:task_id/destroy', function (req, res) {
-  models.Task.destroy({
-    where: {
-      id: req.params.task_id
-    }
-  }).then(function() {
-    res.redirect('/');
-  });
 });
 
 module.exports = router;
