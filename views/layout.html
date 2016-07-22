@@ -9,7 +9,7 @@
 <div id="main">
     <ul>
         {{each list}}
-        <li>编号：{{$value.id}} &nbsp;&nbsp;姓名：{{$value.nick_name}}</a></li>
+        <li>编号：{{$value.id}} &nbsp;&nbsp;姓名：{{$value.nick_name}}</li>
         {{if $value.create_date}}
         {{$value.create_date | dateFormat:'yyyy年 MM月 dd日 hh:mm:ss'}}
         {{/if}}
